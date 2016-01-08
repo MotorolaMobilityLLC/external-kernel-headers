@@ -49,11 +49,11 @@
 #define GSP_IO_GET_CAPABILITY(size)  \
 _IOWR(GSP_IO_MAGIC, GSP_GET_CAPABILITY, size)
 
-#define GSP_IO_TRIGGER(a, n, s, size)  \
+#define GSP_IO_TRIGGER(async, cnt, split, size)  \
 {\
 _IOWR(GSP_IO_MAGIC,\
-GSP_TRIGGER | a << GSP_ASYNC_SHIFT |\
-s << GSP_SPLIT_SHIFT | n << GSP_CNT_SHIFT,\
+GSP_TRIGGER | (async) << GSP_ASYNC_SHIFT |\
+(split) << GSP_SPLIT_SHIFT | (cnt) << GSP_CNT_SHIFT,\
 size)\
 }
 
@@ -202,6 +202,11 @@ struct gsp_addr_data {
 	__u32 addr_va;
 };
 
+struct gsp_offset {
+	__u32 uv_offset;
+	__u32 v_offset;
+};
+
 /*
  * to distinguish struct from uapi gsp cfg header file
  * and no uapi gsp cfg header file. structure at uapi
@@ -215,6 +220,7 @@ struct gsp_layer_user {
 	int wait_fd;
 	int sig_fd;
 	struct gsp_addr_data src_addr;
+	struct gsp_offset offset;
 };
 
 
@@ -223,7 +229,10 @@ struct gsp_capability {
 	/*used to indicate struct is initialized*/
 	uint32_t magic;
 	char version[32];
+
 	size_t capa_size;
+	uint32_t io_cnt;
+	uint32_t core_cnt;
 
 	uint32_t max_layer;
 	uint32_t max_img_layer;
