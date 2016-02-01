@@ -86,12 +86,6 @@ enum gsp_irq_type {
 	GSP_IRQ_TYPE_INVALID,
 };
 
-enum GSP_RNT {
-	GSP_RTN_SUCCESS = 0x00,
-	GSP_RTN_POINTER_INVALID,
-	GSP_RTN_PARAM_INVALID,
-};
-
 enum gsp_rot_angle {
 	GSP_ROT_ANGLE_0 = 0x00,
 	GSP_ROT_ANGLE_90,
@@ -104,96 +98,23 @@ enum gsp_rot_angle {
 	GSP_ROT_ANGLE_MAX_NUM,
 };
 
-/*Original: B3B2B1B0*/
-enum gsp_word_endian {
-	GSP_WORD_ENDN_0 = 0x00,     /*B3B2B1B0*/
-	GSP_WORD_ENDN_1,            /*B0B1B2B3*/
-	GSP_WORD_ENDN_2,            /*B2B3B0B1*/
-	GSP_WORD_ENDN_3,            /*B1B0B3B2*/
-	GSP_WORD_ENDN_MAX_NUM,
-};
-
-enum gsp_rgb_swap_mod {
-	GSP_RGB_SWP_RGB = 0x00,
-	GSP_RGB_SWP_RBG,
-	GSP_RGB_SWP_GRB,
-	GSP_RGB_SWP_GBR,
-	GSP_RGB_SWP_BGR,
-	GSP_RGB_SWP_BRG,
-	GSP_RGB_SWP_MAX,
-};
-
-enum gsp_a_swap_mod {
-	GSP_A_SWAP_ARGB,
-	GSP_A_SWAP_RGBA,
-	GSP_A_SWAP_MAX,
-};
-
-enum gsp_data_format {
-	GSP_FMT_ARGB888 = 0x00,
-	GSP_FMT_RGB888,
-	GSP_FMT_CMPESS_RGB888,
-	GSP_FMT_ARGB565,
-	GSP_FMT_RGB565,
-	GSP_FMT_YUV420_2P,
-	GSP_FMT_YUV420_3P,
-	GSP_FMT_YUV400,
-	GSP_FMT_YUV422,
-	GSP_FMT_8BPP,
-	GSP_FMT_PMARGB,
-	GSP_FMT_MAX_NUM,
-};
-
-
-enum gsp_src_layer_format {
-	GSP_SRC_FMT_ARGB888 = 0x00,
-	GSP_SRC_FMT_RGB888,
-	GSP_SRC_FMT_ARGB565,
-	GSP_SRC_FMT_RGB565,
-	GSP_SRC_FMT_YUV420_2P,
-	GSP_SRC_FMT_YUV420_3P,
-	GSP_SRC_FMT_YUV400_1P,
-	GSP_SRC_FMT_YUV422_2P,
-	GSP_SRC_FMT_8BPP,
-	GSP_SRC_FMT_MAX_NUM,
-};
-
-enum gsp_des_layer_format {
-	GSP_DST_FMT_ARGB888 = 0x00,
-	GSP_DST_FMT_RGB888,
-	GSP_DST_FMT_ARGB565,
-	GSP_DST_FMT_RGB565,
-	GSP_DST_FMT_YUV420_2P,
-	GSP_DST_FMT_YUV420_3P,
-	GSP_DST_FMT_YUV422_2P,
-	GSP_DST_FMT_MAX_NUM,
-};
-
-struct gsp_endian {
-	enum gsp_word_endian             y_word_endn;
-	enum gsp_word_endian             uv_word_endn;
-	enum gsp_word_endian             va_word_endn;
-	enum gsp_rgb_swap_mod          rgb_swap_mode;
-	enum gsp_a_swap_mod            a_swap_mode;
-};
-
 struct gsp_rgb {
-	uint8_t b_val;
-	uint8_t g_val;
-	uint8_t r_val;
-	uint8_t a_val;
+	__u8 b_val;
+	__u8 g_val;
+	__u8 r_val;
+	__u8 a_val;
 };
 
 struct gsp_pos {
-	uint16_t pt_x;
-	uint16_t pt_y;
+	__u16 pt_x;
+	__u16 pt_y;
 };
 
 struct gsp_rect {
-	uint16_t st_x;
-	uint16_t st_y;
-	uint16_t rect_w;
-	uint16_t rect_h;
+	__u16 st_x;
+	__u16 st_y;
+	__u16 rect_w;
+	__u16 rect_h;
 };
 
 struct gsp_addr_data {
@@ -207,6 +128,29 @@ struct gsp_offset {
 	__u32 v_offset;
 };
 
+struct gsp_yuv_adjust_para {
+	__u32 y_brightness;
+	__u32 y_contrast;
+	__u32 u_offset;
+	__u32 u_saturation;
+	__u32 v_offset;
+	__u32 v_saturation;
+};
+
+struct gsp_background_para {
+	__u32 bk_enable;
+	__u32 bk_blend_mod;
+	struct gsp_rgb		 background_rgb;
+};
+
+struct gsp_scale_para {
+	__u32 scale_en;
+	__u32 htap_mod;
+	__u32 vtap_mod;
+	struct gsp_rect		scale_rect_in;
+	struct gsp_rect		scale_rect_out;
+};
+
 /*
  * to distinguish struct from uapi gsp cfg header file
  * and no uapi gsp cfg header file. structure at uapi
@@ -214,11 +158,11 @@ struct gsp_offset {
  */
 
 struct gsp_layer_user {
-	int type;
-	int enable;
-	int share_fd;
-	int wait_fd;
-	int sig_fd;
+	__u32 type;
+	__u32 enable;
+	__s32 share_fd;
+	__s32 wait_fd;
+	__s32 sig_fd;
 	struct gsp_addr_data src_addr;
 	struct gsp_offset offset;
 };
@@ -227,15 +171,15 @@ struct gsp_layer_user {
 #define CAPABILITY_MAGIC_NUMBER 0xDEEFBEEF
 struct gsp_capability {
 	/*used to indicate struct is initialized*/
-	uint32_t magic;
+	__u32 magic;
 	char version[32];
 
 	size_t capa_size;
-	uint32_t io_cnt;
-	uint32_t core_cnt;
+	__u32 io_cnt;
+	__u32 core_cnt;
 
-	uint32_t max_layer;
-	uint32_t max_img_layer;
+	__u32 max_layer;
+	__u32 max_img_layer;
 
 	struct gsp_rect crop_max;
 	struct gsp_rect crop_min;
@@ -244,7 +188,7 @@ struct gsp_capability {
 
 	/* GSP_ADDR_TYPE_PHYSICAL:phy addr
 	 * GSP_ADDR_TYPE_IOVIRTUAL:iova addr*/
-	enum gsp_addr_type buf_type;
+	__u32 buf_type;
 };
 
 #endif
