@@ -208,6 +208,9 @@ struct gsp_r3p0_capability {
 
 	int block_alpha_limit;
 	int max_throughput;
+
+	int max_gspmmu_size;
+	int max_gsp_bandwidth;
 };
 
 #endif  // GSP_R3P0_CFG_H_
