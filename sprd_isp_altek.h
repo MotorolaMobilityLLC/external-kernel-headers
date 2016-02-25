@@ -156,6 +156,8 @@ enum isp_dev_capability {
 	ISP_GET_STATIS_BUF_SIZE,
 	ISP_GET_DRAM_BUF_SIZE,
 	ISP_GET_HIGH_ISO_BUF_SIZE,
+	ISP_GET_CONTINUE_SIZE,
+	ISP_GET_SINGLE_SIZE,
 };
 
 enum isp_dev_read_id {
@@ -257,12 +259,14 @@ typedef struct
 */
 #pragma pack(push) /* push current alignment to stack */
 #pragma pack(4) /* set alignment to 1 byte boundary */
+#define AWB_UCYFACTOR_NUM              16
+#define AWB_BBRFACTOR_NUM              33
 typedef struct
 {
 	u16 TokenID;
 	StatisticsDldRegion tAWBRegion;
-	u8 ucYFactor[16];
-	s8 BBrFactor[33];
+	u8 ucYFactor[AWB_UCYFACTOR_NUM];
+	s8 BBrFactor[AWB_BBRFACTOR_NUM];
 	u16  uwRGain;
 	u16  uwGGain;
 	u16  uwBGain;
@@ -535,6 +539,11 @@ struct isp_img_read_op {
 struct isp_img_write_op {
 	uint32_t cmd;
 	uint32_t reserved;
+};
+
+struct isp_img_size {
+	uint32_t width;
+	uint32_t height;
 };
 
 struct isp_init_mem_param {
