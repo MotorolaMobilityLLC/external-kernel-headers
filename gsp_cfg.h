@@ -52,8 +52,10 @@ _IOWR(GSP_IO_MAGIC, GSP_GET_CAPABILITY, size)
 #define GSP_IO_TRIGGER(async, cnt, split, size)  \
 {\
 _IOWR(GSP_IO_MAGIC,\
-GSP_TRIGGER | (async) << GSP_ASYNC_SHIFT |\
-(split) << GSP_SPLIT_SHIFT | (cnt) << GSP_CNT_SHIFT,\
+GSP_TRIGGER |\
+(((async) << GSP_ASYNC_SHIFT) & GSP_ASYNC_MASK)|\
+(((split) << GSP_SPLIT_SHIFT) & GSP_SPLIT_MASK)|\
+(((cnt) << GSP_CNT_SHIFT) & GSP_CNT_MASK),\
 size)\
 }
 
@@ -174,7 +176,7 @@ struct gsp_capability {
 	__u32 magic;
 	char version[32];
 
-	size_t capa_size;
+	__u32 capa_size;
 	__u32 io_cnt;
 	__u32 core_cnt;
 

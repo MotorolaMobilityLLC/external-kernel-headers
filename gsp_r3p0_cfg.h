@@ -187,30 +187,30 @@ struct gsp_r3p0_cfg_user {
 struct gsp_r3p0_capability {
 	struct gsp_capability common;
 	/* 1: means 1/16, 64 means 4*/
-	uint16_t scale_range_up;
+	__u32 scale_range_up;
 	/* 1: means 1/16, 64 means 4*/
-	uint16_t scale_range_down;
-	int yuv_xywh_even;
-	int max_video_size;
-	int video_need_copy;
-	int blend_video_with_OSD;
-	int OSD_scaling;
-	int scale_updown_sametime;
-	int max_yuvLayer_cnt;
-	int max_scaleLayer_cnt;
-	int seq0_scale_range_up;
-	int seq0_scale_range_down;
-	int seq1_scale_range_up;
-	int seq1_scale_range_down;
-	int src_yuv_xywh_even_limit;
-	int csc_matrix_in;
-	int csc_matrix_out;
+	__u32 scale_range_down;
+	__u32 yuv_xywh_even;
+	__u32 max_video_size;
+	__u32 video_need_copy;
+	__u32 blend_video_with_OSD;
+	__u32 OSD_scaling;
+	__u32 scale_updown_sametime;
+	__u32 max_yuvLayer_cnt;
+	__u32 max_scaleLayer_cnt;
+	__u32 seq0_scale_range_up;
+	__u32 seq0_scale_range_down;
+	__u32 seq1_scale_range_up;
+	__u32 seq1_scale_range_down;
+	__u32 src_yuv_xywh_even_limit;
+	__u32 csc_matrix_in;
+	__u32 csc_matrix_out;
 
-	int block_alpha_limit;
-	int max_throughput;
+	__u32 block_alpha_limit;
+	__u32 max_throughput;
 
-	int max_gspmmu_size;
-	int max_gsp_bandwidth;
+	__u32 max_gspmmu_size;
+	__u32 max_gsp_bandwidth;
 };
 
 #endif  // GSP_R3P0_CFG_H_
