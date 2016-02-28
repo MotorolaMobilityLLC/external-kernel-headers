@@ -144,13 +144,13 @@ struct _sensor_otp_param_tag {
 	_IOW(SENSOR_IOC_MAGIC,  15, uint32_t)
 #define SENSOR_IO_SET_I2CCLOCK	\
 	_IOW(SENSOR_IOC_MAGIC,  16, uint32_t)
-#define SENSOR_IO_I2C_WRITE_EXT	\
-	_IOW(SENSOR_IOC_MAGIC,  17, struct sensor_i2c_tag)
 #define SENSOR_IO_GET_FLASH_LEVEL	\
-	_IOWR(SENSOR_IOC_MAGIC, 18, struct sensor_flash_level)
+	_IOWR(SENSOR_IOC_MAGIC, 17, struct sensor_flash_level)
 #define SENSOR_IO_IF_CFG	\
-	_IOW(SENSOR_IOC_MAGIC,  19, struct sensor_if_cfg_tag)
-#define SENSOR_IO_I2C_READ_EXT	\
+	_IOW(SENSOR_IOC_MAGIC,  18, struct sensor_if_cfg_tag)
+#define SENSOR_IO_GRC_I2C_WRITE	\
+	_IOW(SENSOR_IOC_MAGIC,  19, struct sensor_i2c_tag)
+#define SENSOR_IO_GRC_I2C_READ	\
 	_IOWR(SENSOR_IOC_MAGIC, 20, struct sensor_i2c_tag)
 #define SENSOR_IO_POWER_CFG	\
 	_IOWR(SENSOR_IOC_MAGIC, 21, struct sensor_power_info_tag)
