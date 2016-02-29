@@ -600,6 +600,6 @@ struct isp_irq {
 #define ISP_IO_CFG_PARAM           _IOWR(ISP_IO_MAGIC, 10, struct isp_io_param)
 #define ISP_IO_GET_TIME            _IOR(ISP_IO_MAGIC, 11, struct sprd_isp_time)
 #define ISP_IO_GET_STATIS_BUF      _IOR(ISP_IO_MAGIC, 12, struct isp_statis_frame)
-
+#define ISP_IO_SET_DCAM_ID             _IOR(ISP_IO_MAGIC, 13, uint32_t)
 
 #endif
