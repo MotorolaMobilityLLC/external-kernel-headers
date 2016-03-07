@@ -14,17 +14,21 @@
 #ifndef _UAPI_SPRD_ION_H
 #define _UAPI_SPRD_ION_H
 
-#define ION_HEAP_ID_SYSTEM   0
-#define ION_HEAP_ID_MM       1
-#define ION_HEAP_ID_OVERLAY  2
-#define ION_HEAP_ID_FB       3
-#define ION_HEAP_ID_CAM      4
+enum sprd_ion_heap_ids {
+	ION_HEAP_ID_SYSTEM = 0,
+	ION_HEAP_ID_MM,
+	ION_HEAP_ID_OVERLAY,
+	ION_HEAP_ID_FB,
+	ION_HEAP_ID_CAM,
+};
 
 #define ION_HEAP_ID_MASK_SYSTEM        (1<<ION_HEAP_ID_SYSTEM)
 #define ION_HEAP_ID_MASK_MM            (1<<ION_HEAP_ID_MM)
 #define ION_HEAP_ID_MASK_OVERLAY       (1<<ION_HEAP_ID_OVERLAY)
 #define ION_HEAP_ID_MASK_FB            (1<<ION_HEAP_ID_FB)
 #define ION_HEAP_ID_MASK_CAM           (1<<ION_HEAP_ID_CAM)
+
+#define ION_FLAG_SECURE  (1<<31)
 
 enum ION_SPRD_CUSTOM_CMD {
 	ION_SPRD_CUSTOM_PHYS = 0,
