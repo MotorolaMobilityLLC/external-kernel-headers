@@ -18,11 +18,13 @@
 #define ION_HEAP_ID_MM       1
 #define ION_HEAP_ID_OVERLAY  2
 #define ION_HEAP_ID_FB       3
+#define ION_HEAP_ID_CAM      4
 
 #define ION_HEAP_ID_MASK_SYSTEM        (1<<ION_HEAP_ID_SYSTEM)
 #define ION_HEAP_ID_MASK_MM            (1<<ION_HEAP_ID_MM)
 #define ION_HEAP_ID_MASK_OVERLAY       (1<<ION_HEAP_ID_OVERLAY)
 #define ION_HEAP_ID_MASK_FB            (1<<ION_HEAP_ID_FB)
+#define ION_HEAP_ID_MASK_CAM           (1<<ION_HEAP_ID_CAM)
 
 enum ION_SPRD_CUSTOM_CMD {
 	ION_SPRD_CUSTOM_PHYS = 0,
