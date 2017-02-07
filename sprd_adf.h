@@ -4,7 +4,7 @@
 #include <linux/types.h>
 #include <video/adf.h>
 
-#define SPRD_ADF_MAX_PLANE 4
+#define SPRD_ADF_MAX_PLANE 6
 
 /**
  * overlay engine or hw layer's transform capability
@@ -164,12 +164,9 @@ struct sprd_adf_overlayengine_capability {
 	__u32	scale;
 	__u32	blending;
 
-	union {
-		struct sprd_adf_hwlayer_capability     hwlayers[0];
-
-		const struct sprd_adf_hwlayer_capability
-				*hwlayer_ptr[SPRD_ADF_MAX_PLANE];
-	};
+	const struct sprd_adf_hwlayer_capability
+		*hwlayer_ptr[SPRD_ADF_MAX_PLANE];
+	struct sprd_adf_hwlayer_capability     hwlayers[0];
 };
 
 /**
@@ -193,6 +190,10 @@ struct sprd_adf_hwlayer_custom_data {
 	__u32	hwlayer_id;
 	__u32	buffer_id;
 	__u32	alpha;
+	__s16	start_x;
+	__s16	start_y;
+	__u16	start_w;
+	__u16	start_h;
 	__s16	dst_x;
 	__s16	dst_y;
 	__u16	dst_w;
