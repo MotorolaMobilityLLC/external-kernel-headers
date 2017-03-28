@@ -29,6 +29,7 @@ enum sprd_ion_heap_ids {
 #define ION_HEAP_ID_MASK_CAM           (1<<ION_HEAP_ID_CAM)
 
 #define ION_FLAG_SECURE  (1<<31)
+#define ION_FLAG_NO_CLEAR (1 << 16)
 
 enum ION_SPRD_CUSTOM_CMD {
 	ION_SPRD_CUSTOM_PHYS = 0,
