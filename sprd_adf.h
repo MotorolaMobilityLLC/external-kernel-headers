@@ -202,6 +202,10 @@ struct sprd_adf_hwlayer_custom_data {
 	__u32	rotation;
 	__u32	scale;
 	__u32   compression;
+	__u32   height;
+	__u32   header_size_r;
+	__u32   header_size_y;
+	__u32   header_size_uv;
 };
 
 /**
