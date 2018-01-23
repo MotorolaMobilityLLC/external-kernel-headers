@@ -126,6 +126,7 @@ struct gsp_r6p0_img_layer_params {
   __u8 y2y_mod;
   struct gsp_yuv_adjust_para yuv_adjust;
   struct gsp_scale_para scale_para;
+  __u32   header_size_r;
 };
 
 struct gsp_r6p0_img_layer_user {
@@ -150,6 +151,7 @@ struct gsp_r6p0_osd_layer_params {
   __u8 pmargb_en;
   __u8 pmargb_mod;
   __u8 zorder;
+  __u32   header_size_r;
 };
 
 struct gsp_r6p0_osd_layer_user {
@@ -167,6 +169,7 @@ struct gsp_r6p0_des_layer_params {
   __u8 fbc_mod;
   __u8 dither_en;
   struct gsp_background_para bk_para;
+  __u32   header_size_r;
 };
 
 struct gsp_r6p0_des_layer_user {
