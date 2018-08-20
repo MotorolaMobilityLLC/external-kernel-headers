@@ -9,6 +9,7 @@
 
 struct pmem_info {
     unsigned long phy_addr;
+    unsigned int phys_offset;
     size_t size;
 };
 
