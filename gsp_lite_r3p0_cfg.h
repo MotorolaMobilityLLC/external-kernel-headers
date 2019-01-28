@@ -22,6 +22,7 @@
 #define LITE_R3P0_OSDL_NUM 2
 #define LITE_R3P0_IMGSEC_NUM 0
 #define LITE_R3P0_OSDSEC_NUM 1
+#define LITE_R3P0_OSDL_ROT_NUM 1
 
 /*Original: B3B2B1B0*/
 enum gsp_lite_r3p0_word_endian {
