@@ -188,6 +188,14 @@ struct gsp_lite_r2p0_cfg_user {
 	struct gsp_lite_r2p0_misc_cfg_user  misc;
 };
 
+struct drm_gsp_lite_r2p0_cfg_user {
+  bool async;
+  __u32 size;
+  __u32 num;
+  bool split;
+  struct gsp_lite_r2p0_cfg_user *config;
+};
+
 struct gsp_lite_r2p0_capability {
 	struct gsp_capability common;
 	/* 1: means 1/16, 64 means 4*/
