@@ -92,6 +92,13 @@ enum gsp_r9p0_des_layer_format {
   GSP_R9P0_DST_FMT_MAX_NUM,
 };
 
+enum gsp_r9p0_frequency {
+  GSP_R9P0_FREQUENCY_256M = 256000000,
+  GSP_R9P0_FREQUENCY_307_2M = 307200000,
+  GSP_R9P0_FREQUENCY_384M = 384000000,
+  GSP_R9P0_FREQUENCY_512M = 512000000,
+};
+
 struct gsp_r9p0_endian {
   __u32 y_rgb_word_endn;
   __u32 y_rgb_dword_endn;
@@ -126,7 +133,8 @@ struct gsp_r9p0_img_layer_params {
   __u8 y2y_mod;
   struct gsp_yuv_adjust_para yuv_adjust;
   struct gsp_scale_para scale_para;
-  __u32   header_size_r;
+  __u32 header_size_r;
+  __u32 work_freq;
 };
 
 struct gsp_r9p0_img_layer_user {
@@ -151,7 +159,8 @@ struct gsp_r9p0_osd_layer_params {
   __u8 pmargb_en;
   __u8 pmargb_mod;
   __u8 zorder;
-  __u32   header_size_r;
+  __u32 header_size_r;
+  __u32 work_freq;
 };
 
 struct gsp_r9p0_osd_layer_user {
@@ -184,6 +193,7 @@ struct gsp_r9p0_misc_cfg_user {
   uint8_t co_work1;
   uint8_t work_mod;
   uint8_t pmargb_en;
+  uint32_t work_freq;
   struct gsp_rect workarea_src_rect;
   struct gsp_pos workarea_des_pos;
 };
