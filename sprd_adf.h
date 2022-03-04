@@ -1,3 +1,13 @@
+  /* 
+  * SPDX-FileCopyrightText: <FirstPublishedYear>-<LastUpdatedYear> Unisoc (Shanghai) Technologies Co., Ltd
+  * SPDX-License-Identifier: GPL-2.0
+  *
+ * Copyright [First publish Year] [Last updated year] Unisoc (Shanghai) Technologies Co., Ltd
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License
+ * as published by the Free Software Foundation.
+  */
 #ifndef _UAPI_VIDEO_SPRD_ADF_H_
 #define _UAPI_VIDEO_SPRD_ADF_H_
 

@@ -1,3 +1,13 @@
+ /* 
+  * SPDX-FileCopyrightText: <FirstPublishedYear>-<LastUpdatedYear> Unisoc (Shanghai) Technologies Co., Ltd
+  * SPDX-License-Identifier: GPL-2.0
+  *
+ * Copyright [First publish Year] [Last updated year] Unisoc (Shanghai) Technologies Co., Ltd
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License
+ * as published by the Free Software Foundation.
+  */
 #define SPRD_MAP_IOCTRL_MAGIC        'o'
 
 /**
